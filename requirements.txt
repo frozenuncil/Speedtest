@@ -1,0 +1,4 @@
+customtkinter
+speedtest
+
+(Install with "pip install")

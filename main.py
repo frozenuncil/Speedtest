@@ -6,6 +6,9 @@ import math
 from datetime import datetime
 import csv
 
+## Thanks for reporting Issues: New Update is here.
+
+# Start Programm
 ctk.set_appearance_mode("dark")
 ctk.set_default_color_theme("dark-blue")
 

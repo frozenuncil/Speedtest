@@ -6,11 +6,11 @@ import math
 import csv
 from datetime import datetime
 
-# Set theme and appearance
+#
 ctk.set_appearance_mode("dark")
 ctk.set_default_color_theme("dark-blue")
 
-# Global app variables
+
 APP_WIDTH = 700
 APP_HEIGHT = 520
 BG_COLORS = ["#0f0f0f", "#1a1a2e", "#2e2e4a", "#3e3e63", "#2e2e4a", "#1a1a2e"]
@@ -18,14 +18,14 @@ BG_COLORS = ["#0f0f0f", "#1a1a2e", "#2e2e4a", "#3e3e63", "#2e2e4a", "#1a1a2e"]
 class SpeedtestApp(ctk.CTk):
     def __init__(self):
         super().__init__()
-        self.title("🌐 Ultimate Speedtest App")
+        self.title("Ultimate Speedtest App")
         self.geometry(f"{APP_WIDTH}x{APP_HEIGHT}")
         self.resizable(False, False)
 
-        # Background Gradient Animation
+     
         self.bg_index = 0
 
-        # Speedtest variables
+       
         self.st = None
         self.running = False
         self.angle = 0
@@ -37,35 +37,34 @@ class SpeedtestApp(ctk.CTk):
         self.start_background_animation()
 
     def create_widgets(self):
-        # Main Frame
+       
         self.main_frame = ctk.CTkFrame(self, width=650, height=480, corner_radius=20, fg_color="#111111")
         self.main_frame.place(relx=0.5, rely=0.5, anchor="center")
 
-        # Title Label
+       
         self.title_label = ctk.CTkLabel(self.main_frame, text="🌐 Ultimate Internet Speedtest", font=("Segoe UI", 30, "bold"))
         self.title_label.pack(pady=20)
 
-        # Canvas for Spinner
+        
         self.canvas = ctk.CTkCanvas(self.main_frame, width=150, height=150, bg="#111111", highlightthickness=0)
         self.canvas.pack(pady=10)
 
-        # Download Label
+        
         self.download_label = ctk.CTkLabel(self.main_frame, text="⬇ Download: --- Mbps", font=("Segoe UI", 20))
         self.download_label.pack(pady=5)
 
-        # Upload Label
+     
         self.upload_label = ctk.CTkLabel(self.main_frame, text="⬆ Upload: --- Mbps", font=("Segoe UI", 20))
         self.upload_label.pack(pady=5)
 
-        # Ping Label
+      
         self.ping_label = ctk.CTkLabel(self.main_frame, text="📶 Ping: --- ms", font=("Segoe UI", 18), text_color="#888888")
         self.ping_label.pack(pady=5)
 
-        # Status Label
+     
         self.status_label = ctk.CTkLabel(self.main_frame, text="", font=("Segoe UI", 16), text_color="#888888")
         self.status_label.pack(pady=10)
 
-        # Progress Bars
         self.download_bar = ctk.CTkProgressBar(self.main_frame, width=500)
         self.download_bar.set(0)
         self.download_bar.pack(pady=5)
@@ -74,14 +73,14 @@ class SpeedtestApp(ctk.CTk):
         self.upload_bar.set(0)
         self.upload_bar.pack(pady=5)
 
-        # Buttons Frame
+        
         self.buttons_frame = ctk.CTkFrame(self.main_frame, fg_color="transparent")
         self.buttons_frame.pack(pady=20)
 
-        # Start/Stop Button
+       
         self.start_button = ctk.CTkButton(
             self.buttons_frame,
-            text="⚡ Start Speedtest",
+            text="Start Speedtest",
             font=("Segoe UI", 20),
             fg_color="#1f6feb",
             hover_color="#388bfd",
@@ -119,7 +118,7 @@ class SpeedtestApp(ctk.CTk):
     def draw_spinner(self, progress=0):
         self.canvas.delete("all")
         x, y, r = 75, 75, 60
-        # Background circle
+       
         self.canvas.create_oval(x - r, y - r, x + r, y + r, outline="#444444", width=10)
         # Progress arc
         extent = progress * 360
@@ -202,7 +201,7 @@ class SpeedtestApp(ctk.CTk):
             self.start_button.configure(text="⚡ Start Speedtest")
             return
 
-        # Finish
+    
         if self.running:
             self.status_label.configure(text="✅ Speedtest completed!")
             self.download_label.configure(text=f"⬇ Download: {self.download_speed:.2f} Mbps")
@@ -215,10 +214,10 @@ class SpeedtestApp(ctk.CTk):
             self.status_label.configure(text="🛑 Speedtest stopped.")
 
     def download_test(self):
-        self.download_speed = self.st.download() / 1_000_000  # Convert to Mbps
+        self.download_speed = self.st.download() / 1_000_000  
 
     def upload_test(self):
-        self.upload_speed = self.st.upload() / 1_000_000  # Convert to Mbps
+        self.upload_speed = self.st.upload() / 1_000_000  
 
     def log_result(self):
         """Append the last test result to a log file"""

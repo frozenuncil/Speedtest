@@ -1,4 +1,4 @@
 customtkinter
-speedtest
+speedtest-cli
 
 (Install with "pip install")
